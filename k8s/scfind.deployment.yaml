@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: scfind
+spec:
+  selector:
+    matchLabels:
+      app: scfind
+  replicas: 1
+  template:
+    metadata:
+      name: scfind
+      labels:
+        app: scfind
+    spec:
+      containers:
+      - image: quay.io/cellgeni/scfind:v0.1
+        imagePullPolicy: IfNotPresent
+        name: scfind
+        ports:
+        - containerPort: 3838
+          name: scfind
